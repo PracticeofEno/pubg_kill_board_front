@@ -1,6 +1,18 @@
 import { UserInterface } from "@/utils/interface";
 import axios, { type AxiosResponse } from "axios";
 
+export async function runApiGorutine(random_string: string) {
+    let response;
+    try {
+        response = await axios.get(`/api/gorutine?random_string=${random_string}`);
+        return response.data;
+    }
+    catch (e) {
+        console.log(e);
+        return null;
+    }
+
+}
 
 export async function getUserByApiKeyId(apiKey: string) {
     let response;
@@ -32,6 +44,7 @@ export async function updateSettingData(data: UserInterface) {
         response = await axios.post(`/api/users/user`, {
             "random_string": data.randomString,
             "percent_data": data.percents,
+            "nickname": data.nickname,
             "current_kill": data.currentKill,
             "target_kill": data.targetKill
         })

@@ -6,8 +6,9 @@ export interface PercentInterface {
 export interface UserInterface {
     id: number;
     randomString: string;
-    nickName: string;
+    nickname: string;
     apiKey: string;
+    active: boolean;
     currentKill: number;
     targetKill: number;
     percents: PercentInterface[];
